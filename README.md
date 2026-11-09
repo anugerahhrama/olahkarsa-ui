@@ -9,7 +9,7 @@ Keputusan brand dan alasannya ada di [docs/DECISIONS.md](docs/DECISIONS.md).
 ```jsonc
 // package.json app
 "dependencies": {
-    "@olahkarsa/ui": "github:olahkarsa/olahkarsa-ui#v0.1.0"
+    "@olahkarsa/ui": "github:anugerahhrama/olahkarsa-ui#v0.1.0"
 }
 ```
 

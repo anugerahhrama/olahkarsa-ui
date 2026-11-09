@@ -91,11 +91,11 @@ Karena itu paket bersama memakai nama **`ink-10` … `ink-100`**. Group memperta
 
 ## D-07 · Distribusi: repo paket `olahkarsa-ui`
 
-Token dan (nanti) komponen bersama tinggal di repo **`olahkarsa/olahkarsa-ui`**. Tiap app memasangnya sebagai git dependency yang dikunci ke tag versi:
+Token dan (nanti) komponen bersama tinggal di repo **`anugerahhrama/olahkarsa-ui`** (public; dipindah ke akun kantor `olahkarsa` bila perlu). Tiap app memasangnya sebagai git dependency yang dikunci ke tag versi:
 
 ```jsonc
 // package.json tiap app
-"@olahkarsa/ui": "github:olahkarsa/olahkarsa-ui#v0.1.0"
+"@olahkarsa/ui": "github:anugerahhrama/olahkarsa-ui#v0.1.0"
 ```
 
 Rencana versi:
