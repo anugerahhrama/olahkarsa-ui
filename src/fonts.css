@@ -1,0 +1,6 @@
+/*
+ * @olahkarsa/ui — font resmi (D-04): Inter Tight 400/500/600/700.
+ * Import PALING ATAS di app.css, sebelum `@import 'tailwindcss';`.
+ * Alternatif: pasang <link> yang sama di <head> layout.
+ */
+@import url('https://fonts.bunny.net/css?family=inter-tight:400,500,600,700&display=swap');

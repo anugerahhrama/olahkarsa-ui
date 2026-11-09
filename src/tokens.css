@@ -1,0 +1,218 @@
+/*
+ * @olahkarsa/ui — design tokens (v0.1.0)
+ *
+ * Satu sumber warna, tipografi, dan radius untuk seluruh ekosistem Olahkarsa.
+ * Keputusan & alasan: docs/DECISIONS.md
+ *
+ * Pakai di app (Tailwind v4), setelah `@import 'tailwindcss';`:
+ *   @import '@olahkarsa/ui/tokens.css';
+ *
+ * Nama variabel semantik (--background, --primary, ...) mengikuti konvensi
+ * shadcn-vue, jadi komponen `components/ui/*` yang sudah ada langsung ikut.
+ */
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------ */
+/* Token statis — jadi utility Tailwind (bg-brand, text-ink-70, ...)   */
+/* ------------------------------------------------------------------ */
+@theme {
+    --font-sans:
+        'Inter Tight', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Brand (D-01, D-02) */
+    --color-brand: #009dfb;
+    --color-brand-hover: #0069a7;
+    --color-brand-pressed: #003454;
+    --color-brand-border: #ccebfe;
+    --color-brand-surface: #f5fbff;
+    --color-brand-deep: #004aff;
+    --color-brand-accent: #fecc00;
+
+    /* Alias kompatibilitas ok-group-app (dihapus di v1.0) */
+    --color-primary-main: #009dfb;
+    --color-primary-hover: #0069a7;
+    --color-primary-pressed: #003454;
+    --color-primary-border: #ccebfe;
+    --color-primary-surface: #f5fbff;
+
+    /* Neutral Figma — namespace ink-* agar tidak bentrok neutral-* Tailwind (D-05) */
+    --color-ink-10: #ffffff;
+    --color-ink-20: #f5f5f5;
+    --color-ink-30: #ededed;
+    --color-ink-40: #d6d6d6;
+    --color-ink-50: #c2c2c2;
+    --color-ink-60: #878787;
+    --color-ink-70: #606060;
+    --color-ink-80: #383838;
+    --color-ink-90: #403a3a;
+    --color-ink-100: #101010;
+
+    /* Semantic (Figma style guide) */
+    --color-success: #50cd89;
+    --color-success-hover: #46b277;
+    --color-success-pressed: #28593f;
+    --color-success-border: #c5eed8;
+    --color-success-surface: #f2fff8;
+
+    --color-warning: #ffd33c;
+    --color-warning-hover: #d5b032;
+    --color-warning-pressed: #806a1e;
+    --color-warning-border: #fff0be;
+    --color-warning-surface: #fff6d8;
+
+    --color-error: #f14141;
+    --color-error-hover: #d93a3a;
+    --color-error-pressed: #802a2a;
+    --color-error-border: #fac0c0;
+    --color-error-surface: #fff2f2;
+
+    --color-info: #7239ea;
+    --color-info-hover: #6633d1;
+    --color-info-pressed: #3f2478;
+    --color-info-border: #d0bdf8;
+    --color-info-surface: #f6f2ff;
+
+    /* Radius (D-06) */
+    --radius-btn: 12px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Token semantik — menunjuk ke variabel runtime (light/dark)          */
+/* ------------------------------------------------------------------ */
+@theme inline {
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary-strong: var(--primary-strong);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    --radius: 0.5rem;
+
+    --background: #ffffff;
+    --foreground: #101010;
+    --card: #ffffff;
+    --card-foreground: #101010;
+    --popover: #ffffff;
+    --popover-foreground: #101010;
+
+    --primary: #009dfb;
+    --primary-foreground: #ffffff;
+    /* Untuk teks/link di atas putih — lulus WCAG AA (5.87:1). Lihat D-09. */
+    --primary-strong: #0069a7;
+
+    --secondary: #f5f5f5;
+    --secondary-foreground: #101010;
+    --muted: #f5f5f5;
+    /* ink-70: #878787 (ink-60) hanya 3.59:1, gagal AA untuk paragraf */
+    --muted-foreground: #606060;
+    --accent: #f5fbff;
+    --accent-foreground: #003454;
+    --destructive: #f14141;
+    --destructive-foreground: #ffffff;
+    --border: #ededed;
+    --input: #d6d6d6;
+    --ring: #009dfb;
+
+    /* Grafik: turunan brand + semantic, urutan kontras tinggi */
+    --chart-1: #009dfb;
+    --chart-2: #003454;
+    --chart-3: #50cd89;
+    --chart-4: #fecc00;
+    --chart-5: #7239ea;
+
+    --sidebar-background: #fafafa;
+    --sidebar-foreground: #383838;
+    --sidebar-primary: #101010;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #f0f0f0;
+    --sidebar-accent-foreground: #383838;
+    --sidebar-border: #e8e8e8;
+    --sidebar-ring: #009dfb;
+}
+
+.dark {
+    --background: #101010;
+    --foreground: #ffffff;
+    --card: #101010;
+    --card-foreground: #ffffff;
+    --popover: #101010;
+    --popover-foreground: #ffffff;
+
+    --primary: #009dfb;
+    --primary-foreground: #ffffff;
+    --primary-strong: #33b1fc;
+
+    --secondary: #383838;
+    --secondary-foreground: #ffffff;
+    --muted: #383838;
+    --muted-foreground: #c2c2c2;
+    --accent: #383838;
+    --accent-foreground: #ffffff;
+    --destructive: #f14141;
+    --destructive-foreground: #ffffff;
+    --border: #383838;
+    --input: #383838;
+    --ring: #009dfb;
+
+    --chart-1: #33b1fc;
+    --chart-2: #ccebfe;
+    --chart-3: #50cd89;
+    --chart-4: #fecc00;
+    --chart-5: #a07cf0;
+
+    --sidebar-background: #121212;
+    --sidebar-foreground: #f5f5f5;
+    --sidebar-primary: #ffffff;
+    --sidebar-primary-foreground: #101010;
+    --sidebar-accent: #282828;
+    --sidebar-accent-foreground: #f5f5f5;
+    --sidebar-border: #282828;
+    --sidebar-ring: #009dfb;
+}
+
+/* Gradasi resmi logo: #009DFB → #004AFF */
+@utility bg-brand-gradient {
+    background-image: linear-gradient(
+        135deg,
+        var(--color-brand),
+        var(--color-brand-deep)
+    );
+}
